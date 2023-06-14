@@ -32,7 +32,18 @@ aside {
             align-self: flex-end;
         }
     form {
-
+        display: flex;
+        flex-direction: column;
+        padding: 7%;
+        gap: 5px;
+    }
+    form div {
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+    form .readDiv {
+        flex-direction: row;
     }
 
 section {
