@@ -44,10 +44,17 @@ aside {
     }
     form .readDiv {
         flex-direction: row;
+        gap: 5px;
     }
 
 section {
-    
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 20%));
+    grid-auto-rows: 200px;
+    gap: 20px;
+    justify-content: center;
+    overflow-y: scroll;
 }
 
 footer {
