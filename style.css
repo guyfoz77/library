@@ -56,6 +56,9 @@ section {
     justify-content: center;
     overflow-y: scroll;
 }
+    .book {
+        padding: 5%;
+    }
 
 footer {
     height: 50px;
