@@ -10,6 +10,13 @@
     /* font-weight: lighter; */
 }
 
+h4 {
+    font-size: 0.9rem;
+}
+p {
+    font-size: 0.75rem;
+}
+
 img {
     height: 100px;
 }
@@ -58,7 +65,31 @@ section {
 }
     .book {
         padding: 5%;
+        display: grid;
+        grid-template: 3fr 2fr 1fr 0.75fr / 2fr 1fr; 
     }
+        .book .title,
+        .book .author,
+        .book .pages {
+            grid-column: 1 / span 2;
+        }
+        .book button {
+            grid-area: -1 / -1 / -2 / -2;
+        }
+
+        .read::after,
+        .unread::after {
+            content: 'read';
+            font-style: italic;
+            font-size: 0.75em;
+            font-weight: 100;
+            color: green;
+            justify-self: left;
+        }
+        .unread::after {
+            content: 'unread';
+            color: red;
+        }
 
 footer {
     height: 50px;
