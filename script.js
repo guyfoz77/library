@@ -24,8 +24,14 @@ addBookButton.addEventListener('submit', (e) => {
 });
 
 function addBooks() {
-    library.forEach(book => {
-        const bookcaseDiv = document.querySelector('.bookcase');
+    const bookcaseDiv = document.querySelector('.bookcase');
+    const books = document.querySelectorAll('.book');
+    
+    books.forEach(book => {  //removes all books before re adding them (there is absolutely a better way to add books)
+        book.remove(); 
+    })
+
+    library.forEach(book => { //adds all the books onto the shelf
         const bookDiv = document.createElement('div');
             bookDiv.classList.add('book');
         const title = document.createElement('h3');
