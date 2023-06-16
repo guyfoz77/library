@@ -1,17 +1,11 @@
 let library = []
 
-function Book() {
-    const title = document.querySelector('#title');
-    const author = document.querySelector('#author');
-    const pages = document.querySelector('#pages');
-    const read = document.querySelector('#read');
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 
-    this.title = title.value;
-    this.author = author.value;
-    this.pages = pages.value;
-    this.read = read.checked;
-
-    console.log(read.checked);
     console.log(library);
 }
 
@@ -19,7 +13,12 @@ const addBookButton = document.querySelector('.addBook');
 
 addBookButton.addEventListener('submit', (e) => {
     e.preventDefault();
-    library.push(new Book());
+    library.push(new Book(
+        document.querySelector('#title').value,
+        document.querySelector('#author').value,
+        document.querySelector('#pages').value,
+        document.querySelector('#read').checked
+    ));
     addBooks();
 });
 
