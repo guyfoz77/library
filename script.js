@@ -1,4 +1,18 @@
-let library = []
+let examplebook = {
+    title: 'An Example Book',
+    author: 'Example RR Author',
+    pages: 552,
+    read: true,    
+}
+let examplebook2 = {
+    title: 'Another Example',
+    author: 'Example C Writer',
+    pages: 224,
+    read: false,    
+}
+
+let library = [examplebook, examplebook2];
+addBooks();
 
 function Book(title, author, pages, read) {
     this.title = title;
