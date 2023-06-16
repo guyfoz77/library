@@ -11,7 +11,8 @@ function Book() {
     this.pages = pages.value;
     this.read = read.checked;
 
-    console.log(title.textContent);
+    console.log(read.checked);
+    console.log(library);
 }
 
 const addBookButton = document.querySelector('.addBook');
@@ -19,5 +20,32 @@ const addBookButton = document.querySelector('.addBook');
 addBookButton.addEventListener('submit', (e) => {
     e.preventDefault();
     library.push(new Book());
-    console.log(library);
+    addBooks();
 });
+
+function addBooks() {
+    library.forEach(book => {
+        const bookcaseDiv = document.querySelector('.bookcase');
+        const bookDiv = document.createElement('div');
+            bookDiv.classList.add('book');
+        const title = document.createElement('h3');
+            title.textContent = book.title;
+            title.classList.add('title');
+        const author = document.createElement('h4');
+            author.textContent = book.author;
+            author.classList.add('author');
+        const pages = document.createElement('p');
+            pages.textContent = book.pages;
+            pages.classList.add('pages');
+        const button = document.createElement('button');
+            button.textContent = 'Remove';
+
+        if(book.read == true) {
+            bookDiv.classList.add('read');
+        } else bookDiv.classList.add('unread');
+        
+        bookDiv.append(title, author, pages, button);
+        bookcaseDiv.appendChild(bookDiv);
+
+    })
+}
