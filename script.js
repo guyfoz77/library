@@ -54,7 +54,7 @@ function addBooks() {
             author.textContent = book.author;
             author.classList.add('author');
         const pages = document.createElement('p');
-            pages.textContent = book.pages;
+            pages.textContent = `${book.pages} pages.`;
             pages.classList.add('pages');
         const button = document.createElement('button');
             button.textContent = 'Remove';
