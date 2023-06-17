@@ -3,7 +3,7 @@
 }
 
 * {
-    border: solid black;
+    /* border: solid black; */
     box-sizing: border-box;
     margin: 0;
     font-family: 'Roboto Slab', serif;

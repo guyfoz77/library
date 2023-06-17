@@ -24,7 +24,6 @@ function Book(title, author, pages, read) {
 }
 
 const addBookButton = document.querySelector('.addBook');
-
 addBookButton.addEventListener('submit', (e) => {
     e.preventDefault();
     library.push(new Book(
@@ -36,6 +35,16 @@ addBookButton.addEventListener('submit', (e) => {
     addBooks();
 });
 
+function initDeleteButton() {
+    const deleteButton = document.querySelectorAll('.book button');
+    deleteButton.forEach(button => {
+        button.addEventListener('click', (e) => {
+            library.splice(+button.dataset.index, 1);
+            addBooks();
+        })
+    });
+}
+
 function addBooks() {
     const bookcaseDiv = document.querySelector('.bookcase');
     const books = document.querySelectorAll('.book');
@@ -44,7 +53,9 @@ function addBooks() {
         book.remove(); 
     })
 
+    let i = 0;
     library.forEach(book => { //adds all the books onto the shelf
+        
         const bookDiv = document.createElement('div');
             bookDiv.classList.add('book');
         const title = document.createElement('h3');
@@ -58,6 +69,8 @@ function addBooks() {
             pages.classList.add('pages');
         const button = document.createElement('button');
             button.textContent = 'Remove';
+            button.dataset.index = i;
+            i++
 
         if(book.read == true) {
             bookDiv.classList.add('read');
@@ -67,4 +80,10 @@ function addBooks() {
         bookcaseDiv.appendChild(bookDiv);
 
     })
+    
+    initDeleteButton();
+
+    const form = document.querySelector('form');
+    form.reset();
 }
+
