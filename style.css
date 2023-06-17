@@ -29,6 +29,25 @@ body {
     grid-template: 1fr 50px / 300px 1fr;
 }
 
+button,
+input[type='submit'] {
+    appearance: none;
+    border: solid var(--dark-contrast);
+    width: fit-content;
+    align-self: flex-end;
+    border-radius: 10%;
+    background-color: var(--dark-contrast);
+}
+button:hover,
+input[type='submit']:hover {
+    background-color: lightgray;
+}
+button:active,
+input[type='submit']:active {
+    background-color: lightgray;
+    border: solid var(--dark-colour);
+}
+
 aside {
     height: 100%;
     background-color: var(--dark-colour);
@@ -49,6 +68,14 @@ aside {
     }
     form input {
         background-color: var(--dark-contrast);
+        border: solid black;
+        border-radius: 0 15px 15px 0;
+    }
+    form input:focus {
+        outline: solid var(--light-colour);
+    }
+    form input[type='checkbox']:checked {
+        accent-color: var(--light-colour);
     }
     form div {
         display: flex;
