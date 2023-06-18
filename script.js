@@ -30,9 +30,8 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.readToggle = function () {
-    // this.read = !this.read;
-    console.log('hello');
-    console.log(this);
+    library[+this.dataset.index].read = !library[+this.dataset.index].read
+    addBooks();
 }
 
 addBooks();
