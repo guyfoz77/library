@@ -37,6 +37,7 @@ input[type='submit'] {
     align-self: flex-end;
     border-radius: 10%;
     background-color: var(--dark-contrast);
+    cursor: pointer;
 }
 button:hover,
 input[type='submit']:hover {
@@ -134,4 +135,14 @@ footer {
     background-color: var(--dark-colour);
     color: var(--dark-contrast);
     grid-column: 1 / span 2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+footer a {
+    text-decoration: none;
+    color: var(--dark-contrast);
+}
+footer a:hover {
+    color: var(--light-colour);
 }
