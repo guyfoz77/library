@@ -1,27 +1,41 @@
-let examplebook = {
-    title: 'An Example Book',
-    author: 'Example RR Author',
-    pages: 552,
-    read: true,    
-}
-let examplebook2 = {
-    title: 'Another Example',
-    author: 'Example C Writer',
-    pages: 224,
-    read: false,    
-}
+// let examplebook = {
+//     title: 'An Example Book',
+//     author: 'Example RR Author',
+//     pages: 552,
+//     read: true,    
+// }
+// let examplebook2 = {
+//     title: 'Another Example',
+//     author: 'Example C Writer',
+//     pages: 224,
+//     read: false,    
+// }
 
-let library = [examplebook, examplebook2];
-addBooks();
+let library = [];
+
+library[0] = new Book('an example book',
+'an example author',
+552,
+true);
+library [1] = new Book('Another example',
+'Example C Writer',
+224,
+false);
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    console.log(library);
 }
+
+Book.prototype.readToggle = function () {
+    // this.read = !this.read;
+    console.log('hello');
+    console.log(this);
+}
+
+addBooks();
 
 const addBookButton = document.querySelector('.addBook');
 addBookButton.addEventListener('submit', (e) => {
@@ -36,13 +50,19 @@ addBookButton.addEventListener('submit', (e) => {
 });
 
 function initDeleteButton() {
-    const deleteButton = document.querySelectorAll('.book button');
+    const deleteButton = document.querySelectorAll('.book .delete');
     deleteButton.forEach(button => {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', () => {
             library.splice(+button.dataset.index, 1);
             addBooks();
         })
     });
+}
+function initToggleButton() {
+    const toggleButton = document.querySelectorAll('.toggle');
+    toggleButton.forEach(toggleButton => {
+        toggleButton.addEventListener('click', library[+toggleButton.dataset.index].readToggle);
+    })
 }
 
 function addBooks() {
@@ -69,19 +89,25 @@ function addBooks() {
             pages.classList.add('pages');
         const button = document.createElement('button');
             button.textContent = 'Remove';
+            button.classList.add('delete');
             button.dataset.index = i;
+        const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Toggle Read';
+            toggleButton.classList.add('toggle');
+            toggleButton.dataset.index = i;
             i++
 
         if(book.read == true) {
             bookDiv.classList.add('read');
         } else bookDiv.classList.add('unread');
         
-        bookDiv.append(title, author, pages, button);
+        bookDiv.append(title, author, pages, button, toggleButton);
         bookcaseDiv.appendChild(bookDiv);
 
     })
     
     initDeleteButton();
+    initToggleButton();
 
     const form = document.querySelector('form');
     form.reset();

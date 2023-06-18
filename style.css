@@ -108,12 +108,20 @@ section {
 
     }
         .book .title,
-        .book .author,
-        .book .pages {
+        .book .author {
             grid-column: 1 / span 2;
         }
+        .book .pages {
+            grid-column: 1 / span 1;
+        }
         .book button {
-            grid-area: -1 / -1 / -2 / -2;
+            grid-area: -3 / -2 / -2 / -1;
+            align-self: center;
+            width: 100%;
+        }
+        .book .toggle {
+            grid-area: -2 / -2 / -1 / -1;
+            font-size: 0.5rem;
         }
 
         .read::after,
@@ -122,7 +130,7 @@ section {
             font-style: italic;
             font-size: 0.75em;
             font-weight: 100;
-            color: var(--dark-colour)
+            color: var(--dark-colour);
             justify-self: left;
         }
         .unread::after {
