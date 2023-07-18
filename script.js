@@ -1,17 +1,19 @@
-// let examplebook = {
-//     title: 'An Example Book',
-//     author: 'Example RR Author',
-//     pages: 552,
-//     read: true,    
-// }
-// let examplebook2 = {
-//     title: 'Another Example',
-//     author: 'Example C Writer',
-//     pages: 224,
-//     read: false,    
-// }
-
 let library = [];
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    readToggle = () => {
+        console.log(this);
+        this.read = !this.read;
+        addBooks();
+    }
+}
 
 library[0] = new Book('an example book',
 'an example author',
@@ -22,17 +24,17 @@ library [1] = new Book('Another example',
 224,
 false);
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+// function Book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+// }
 
-Book.prototype.readToggle = function () {
-    library[+this.dataset.index].read = !library[+this.dataset.index].read
-    addBooks();
-}
+// Book.prototype.readToggle = function () {
+//     library[+this.dataset.index].read = !library[+this.dataset.index].read
+//     addBooks();
+// }
 
 addBooks();
 
