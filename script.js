@@ -38,9 +38,14 @@ false);
 
 addBooks();
 
-const addBookButton = document.querySelector('.addBook');
-addBookButton.addEventListener('submit', (e) => {
+const addBookButton = document.querySelector('.addBookButton');
+const form = document.querySelector('.addBook');
+addBookButton.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!form.reportValidity()) {
+        validityChecker();
+        return;
+    }
     library.push(new Book(
         document.querySelector('#title').value,
         document.querySelector('#author').value,
@@ -49,6 +54,24 @@ addBookButton.addEventListener('submit', (e) => {
     ));
     addBooks();
 });
+
+function addErrorMessage(errorMessage) {
+    const errorList = document.querySelector('.errorMessages')
+    const newMessage = document.createElement('li');
+    newMessage.textContent = errorMessage;
+    errorList.append(newMessage);
+}
+function validityChecker() {
+    const errorList = document.querySelector('.errorMessages')
+    errorList.innerHTML = '';
+
+    const title = document.querySelector('#title');
+    const author = document.querySelector('#author');
+    const pages = document.querySelector('#pages');
+    if (title.validity.valueMissing) addErrorMessage('Title is missing');
+    if (author.validity.valueMissing) addErrorMessage('Author is missing');
+    if (pages.validity.valueMissing) addErrorMessage('Pages are missing');
+}
 
 function initDeleteButton() {
     const deleteButton = document.querySelectorAll('.book .delete');
