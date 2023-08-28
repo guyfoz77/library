@@ -68,9 +68,24 @@ function validityChecker() {
     const title = document.querySelector('#title');
     const author = document.querySelector('#author');
     const pages = document.querySelector('#pages');
-    if (title.validity.valueMissing) addErrorMessage('Title is missing');
-    if (author.validity.valueMissing) addErrorMessage('Author is missing');
-    if (pages.validity.valueMissing) addErrorMessage('Pages are missing');
+    if (title.validity.valueMissing) {
+        addErrorMessage('Title is missing')
+    }
+    if (author.validity.valueMissing) {
+        addErrorMessage('Author is missing')
+    }
+    if (pages.validity.valueMissing) {
+        addErrorMessage('Pages are missing')
+    }
+    if (title.validity.tooShort) {
+        addErrorMessage('Title needs to be at least 2 characters long')
+    }
+    if (author.validity.tooShort) {
+        addErrorMessage('Author needs to be at least 4 characters long')
+    }
+    if (pages.validity.rangeUnderflow) {
+        addErrorMessage('Book needs to be at least 1 page long')
+    }
 }
 
 function initDeleteButton() {

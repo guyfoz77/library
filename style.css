@@ -67,6 +67,18 @@ aside {
         padding: 7%;
         gap: 5px;
     }
+    form div {
+        position: relative;
+    }
+    input:invalid+span::after {
+        content: '!';
+        position: absolute;
+        color: var(--light-colour);
+        z-index: 3;
+        left: 1px;
+        top: 50%;
+        left: 102%;
+    }
     form input {
         background-color: var(--dark-contrast);
         border: solid black;
